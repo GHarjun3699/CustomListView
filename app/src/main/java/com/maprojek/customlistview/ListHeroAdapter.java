@@ -16,13 +16,11 @@ import java.util.ArrayList;
 
 //extends RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>
 public class ListHeroAdapter extends RecyclerView.Adapter<ListHeroAdapter.ListViewHolder> {
-    //constructor
+    //11
     private ArrayList<Hero> listHero;
-
     public ListHeroAdapter(ArrayList<Hero> list) {
         this.listHero = list;
     }
-
 
     @NonNull
     @Override
