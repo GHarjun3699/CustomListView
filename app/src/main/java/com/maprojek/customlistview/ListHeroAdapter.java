@@ -16,10 +16,15 @@ import java.util.ArrayList;
 
 //extends RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>
 public class ListHeroAdapter extends RecyclerView.Adapter<ListHeroAdapter.ListViewHolder> {
-    //11
     private ArrayList<Hero> listHero;
     public ListHeroAdapter(ArrayList<Hero> list) {
         this.listHero = list;
+    }
+
+    //klik item list
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     @NonNull
@@ -40,6 +45,19 @@ public class ListHeroAdapter extends RecyclerView.Adapter<ListHeroAdapter.ListVi
         holder.tvName.setText(hero.getName());
         holder.tvDetail.setText(hero.getDetail());
 
+        //klik item list
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(listHero.get(holder.getAdapterPosition()));
+            }
+        });
+
+    }
+
+    //klik item list
+    public interface OnItemClickCallback {
+        void onItemClicked(Hero data);
     }
 
     @Override
